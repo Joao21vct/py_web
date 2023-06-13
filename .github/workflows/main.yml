@@ -1,0 +1,15 @@
+on:
+  push:
+    branches: [ DEV ]
+  pull_request:
+    branches: [ DEV ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{DEPLOY_HOOK}}
+          api-key: ${{API_KEY}}
